@@ -109,19 +109,15 @@ Example voice section:
 
 Environment variables are still supported as temporary overrides for CI, debugging, or one-off runs, but the config file is the default place for durable settings.
 
-## Command Generation
+## CLI Modes
 
-```bash
-tc find all files larger than 500MB under this directory
-tc generate a command to sync ./dist to s3://my-bucket/releases
-tc -e safely remove docker images that are dangling
-```
+| Mode | Example | Output |
+| --- | --- | --- |
+| Command generation | `tc list files in this directory` | Prints the generated command to stdout. |
+| Explain (`-e`, `--explain`) | `tc -e find text files in this directory` | Prints the generated command to stdout, plus any available explanation and applicable risk information to stderr. It does not execute the command. |
+| General prompt (`-p`, `--prompt`) | `tc -p explain when to use rsync vs scp` | Prints a general response to stdout without generating a command. |
 
-Prompt mode:
-
-```bash
-tc -p explain when to use rsync vs scp
-```
+If both `-p` and `-e` are supplied, general prompt mode takes precedence and `-e` has no effect.
 
 ## Config Commands
 
